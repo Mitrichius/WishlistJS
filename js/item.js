@@ -1,92 +1,79 @@
 class ItemElement extends HTMLElement {
-	constructor() {
+    constructor() {
         super();
         this.config = data.config
+        this.htmlCode = ''
     }
     
-	connectedCallback() {
-		this.render();
+    connectedCallback() {
+        this.render()
+        this.innerHTML = this.htmlCode
+    }
+
+    appendHtml(htmlCode) {
+        this.htmlCode += htmlCode
     }
 
     render() {
-        // TODO: проверка на name
-
-        let htmlCode = ''
-        let imageUrl = this.config.image_default
-        let imageCode = ''
-
-        if (this.image !== 'undefined' && this.image) {
-            imageUrl = this.image
-        }
-        imageCode += `<img class="item_image" src="${imageUrl}"/>`
-
-        if (this.url !== 'undefined' && this.url) {
-            htmlCode += `<a href="${this.url}"/>${imageCode}</a>`
-        } else {
-            htmlCode += imageCode
-        }
-
-        htmlCode += '<div class="item_info">'
-        
+        let imageCode = `<img class="item_image" src="${this.image}"/>`
         let nameCode = `<div class="item_name">${this.name}</div>`
-        if (this.url !== 'undefined' && this.url) {
-            htmlCode += `<a href="${this.url}"/>${nameCode}</a>`
-        } else {
-            htmlCode += nameCode
+
+        if (this.url) {
+            imageCode = `<a href="${this.url}"/>${imageCode}</a>`
+            nameCode = `<a href="${this.url}"/>${nameCode}</a>`
         }
 
-        if (this.price !== 'undefined' && this.price) {
-            let currency = this.currency !== 'undefined' ? this.currency : this.config.currency_default
-            htmlCode += `<div class="item_price">${this.price} ${currency}</div>`
-        }
-
-        if (this.tags !== 'undefined' && this.tags) {
-            let tags = this.tags.split(',')
-            htmlCode += '<div class="item_tags">'
-            for (let i = 0; i < tags.length; i++) {
-                htmlCode += `<a class="item_tag" href="#">#${tags[i].trim()}</a>`
-            }
-            htmlCode += '</div>'
-        }
-
-        if (this.date !== 'undefined' && this.date) {
-            htmlCode += `<div class="item_date">${this.date}</div>`
-        }
-
-        htmlCode += '</div>'
+        this.appendHtml(imageCode)
+        this.appendHtml('<div class="item_info">')
+        this.appendHtml(nameCode)
         
-		this.innerHTML = htmlCode;
+        if (this.price) {
+            this.appendHtml(`<div class="item_price">${this.price} ${this.currency}</div>`)
+        }
+
+        if (this.tags) {
+            this.appendHtml('<div class="item_tags">')
+            this.appendHtml(this.tags.map(tag => `<a class="item_tag" href="#">#${tag.trim()}</a>`).join(''))
+            this.appendHtml('</div>')
+        }
+
+        if (this.date) {
+            this.appendHtml(`<div class="item_date">${this.date}</div>`)
+        }
+
+        this.appendHtml('</div>')   
     }
     
     get name() {
-        return this.getAttribute('name');
+        return this.getAttribute('name') !== 'undefined' ? this.getAttribute('name') : undefined;
     }
 
     get price() {
-        return this.getAttribute('price');
+        return this.getAttribute('price') !== 'undefined' ? this.getAttribute('price') : undefined;
     }
 
     get image() {
-        return this.getAttribute('image');
+        return this.getAttribute('image') !== 'undefined' ? this.getAttribute('image') : this.config.image_default;
     }
 
     get tags() {
-        return this.getAttribute('tags');
+        let tags = this.getAttribute('tags')
+        return tags !== 'undefined' && tags ? tags.split(',') : undefined;
     }
 
     get url() {
-        return this.getAttribute('url');
+        return this.getAttribute('url') !== 'undefined' ? this.getAttribute('url') : undefined;
     }
 
     get date() {
-        return this.getAttribute('date');
+        return this.getAttribute('date') !== 'undefined' ? this.getAttribute('date') : undefined;
     }
 
     get currency() {
-        return this.getAttribute('currency');
+        return this.getAttribute('currency') !== 'undefined' ? this.getAttribute('currency') : this.config.currency_default;
     }
 }
 
 if ('customElements' in window) {
-	customElements.define('item-element', ItemElement);
+    customElements.define('item-element', ItemElement);
 }
