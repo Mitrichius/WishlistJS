@@ -12,21 +12,18 @@ Wishlist — small JS page/application for making public wishlist. MVP stage.
 It's a static html-page with JS/CSS so all you need is some web-server, e.g. [nginx](https://github.com/Mitrichius/wishlist/blob/master/nginx.conf).
 
 ## Getting started
-Create new directory for project and initialize git repository:
+Create new directory for project and open it:
 ```
 mkdir wishlist
 cd wishlist
-git init
 ```
 
-Run these commands within directory: 
+Run install script: 
 ```
-git submodule add https://github.com/mitrichius/wishlist.git src
-ln -s src/index.html index.html
-cp src/js/data.dist.js data.js
+bash -c "`curl -fsSL https://raw.github.com/mitrichius/wishlist/submodule/remote-install.sh`"
 ```
 After it fill in `data.js` file with your wished items.  
-Target your webserver to `index.html` and you're ready to go!
+Target your webserver to `index.html` or just open it in browser.
 
 ### Config (data.js)
 
