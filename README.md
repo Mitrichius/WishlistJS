@@ -20,7 +20,7 @@ cd wishlist
 
 Run install script:  
 ```
-bash -c "`curl -fsSL https://raw.github.com/mitrichius/wishlist/submodule/remote-install.sh`"  
+bash -c "`curl -fsSL https://raw.github.com/mitrichius/wishlist/master/remote-install.sh`"  
 ```
 
 After it fill in `data.js` file with your wished items.  
