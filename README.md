@@ -2,14 +2,14 @@
 
 Wishlist — small JS page/application for making public wishlist. MVP stage.
 
-<img src="https://raw.githubusercontent.com/Mitrichius/wishlist/master/images/screenshot-web.png" height="300px"> <img src="https://raw.githubusercontent.com/Mitrichius/wishlist/master/images/screenshot-mobile.png" height="300px">
+<img src="https://raw.githubusercontent.com/Mitrichius/WishlistJS/master/images/screenshot-web.png" height="300px"> <img src="https://raw.githubusercontent.com/Mitrichius/WishlistJS/master/images/screenshot-mobile.png" height="300px">
 
 ## Features
 - Easy handling of items — no databases, just JSON config
 - Customizing via CSS
 
 ## Installation
-It's a static html-page with JS/CSS so all you need is some web-server, e.g. [nginx](https://github.com/Mitrichius/wishlist/blob/master/nginx.conf) or cloud solutions like Netlify or Github Pages.
+It's a static html-page with JS/CSS so all you need is some web-server, e.g. [nginx](https://github.com/Mitrichius/WishlistJS/blob/master/nginx.conf) or cloud solutions like Netlify or Github Pages.
 
 ## Getting started
 Create new directory for project and open it:
@@ -20,7 +20,7 @@ cd wishlist
 
 Run install script:  
 ```
-bash -c "`curl -fsSL https://raw.github.com/mitrichius/wishlist/master/remote-install.sh`"  
+bash -c "`curl -fsSL https://raw.github.com/mitrichius/WishlistJS/master/remote-install.sh`"  
 ```
 
 After it fill in `data.js` file with your wished items.  
@@ -46,9 +46,9 @@ All items except `name` are optional.
 
 #### Selfhosted 
 Just rsync your directory to the server and configure webserver to this path:  
-`rsync -vrzl --delete ./<wishlist_directory>/* <server_name>:<path_to_webserver_dir>`  
+`rsync -vrzl --delete ./ <server_name>:/var/www`  
 
-[Nginx config](https://github.com/Mitrichius/wishlist/blob/master/nginx.conf)
+[Nginx config](https://github.com/Mitrichius/WishlistJS/blob/master/nginx.conf)
 
 #### Netlify 
 Push your directory to new repository on Github (it could be private).  
@@ -58,7 +58,7 @@ Go to Netlify and connect this repository. Config already included.
 If you find a bug or have an idea for a feature, feel free to write an issue or make a PR.
 
 ## TODO
-See [issues](https://github.com/Mitrichius/wishlist/issues).
+See [issues](https://github.com/Mitrichius/WishlistJS/issues).
 
 ## Credits
 [Wish List icon](https://icons8.com/icons/set/wish-list) icon by [Icons8](https://icons8.com)
