@@ -14,8 +14,8 @@ class ItemElement extends HTMLElement {
         this.htmlCode += htmlCode
     }
 
-    render() {
-        let imageCode = `<img class="item_image" src="${this.image}"/>`
+    render() {        
+        let imageCode = this.image ? `<img class="item_image" src="${this.image}"/>` : ''
         let nameCode = `<div class="item_name">${this.name}</div>`
 
         if (this.url) {
@@ -45,32 +45,47 @@ class ItemElement extends HTMLElement {
     }
     
     get name() {
-        return this.getAttribute('name') !== 'undefined' ? this.getAttribute('name') : undefined;
+        return this.getAttribute('name') !== 'undefined' 
+            ? this.getAttribute('name') 
+            : undefined;
     }
 
     get price() {
-        return this.getAttribute('price') !== 'undefined' ? this.getAttribute('price') : undefined;
+        return this.getAttribute('price') !== 'undefined' 
+            ? this.getAttribute('price') 
+            : undefined;
     }
 
     get image() {
-        return this.getAttribute('image') !== 'undefined' ? this.getAttribute('image') : this.config.image_default;
+        let image = this.getAttribute('image')
+        return (image !== 'undefined')
+            ? image 
+            : this.config.image_default;
     }
 
     get tags() {
         let tags = this.getAttribute('tags')
-        return tags !== 'undefined' && tags ? tags.split(',') : undefined;
+        return tags !== 'undefined' && tags 
+            ? tags.split(',') 
+            : undefined;
     }
 
     get url() {
-        return this.getAttribute('url') !== 'undefined' ? this.getAttribute('url') : undefined;
+        return this.getAttribute('url') !== 'undefined' 
+            ? this.getAttribute('url') 
+            : undefined;
     }
 
     get date() {
-        return this.getAttribute('date') !== 'undefined' ? this.getAttribute('date') : undefined;
+        return this.getAttribute('date') !== 'undefined' 
+            ? this.getAttribute('date') 
+            : undefined;
     }
 
     get currency() {
-        return this.getAttribute('currency') !== 'undefined' ? this.getAttribute('currency') : this.config.currency_default;
+        return this.getAttribute('currency') !== 'undefined' 
+            ? this.getAttribute('currency') 
+            : this.config.currency_default;
     }
 }
 
