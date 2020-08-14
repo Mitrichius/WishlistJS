@@ -18,18 +18,17 @@ class ItemElement extends HTMLElement {
         let imageCode = this.image ? `<img class="item_image" src="${this.image}"/>` : ''
         let nameCode = `<div class="item_name">${this.name}</div>`
 
+        let priceCode = this.price ? 
+            `<div class="item_price">${this.price} ${this.currency}</div>` 
+            : ''
+
         if (this.url) {
-            imageCode = `<a href="${this.url}"/>${imageCode}</a>`
-            nameCode = `<a href="${this.url}"/>${nameCode}</a>`
+            imageCode = `<a href="${this.url}"/><div class="item_image_container">${imageCode}${priceCode}</div></a>`
+            nameCode = `<div class="item_name"><a href="${this.url}"/>${this.name}</a></div>`
         }
 
         this.appendHtml(imageCode)
-        this.appendHtml('<div class="item_info">')
         this.appendHtml(nameCode)
-        
-        if (this.price) {
-            this.appendHtml(`<div class="item_price">${this.price} ${this.currency}</div>`)
-        }
 
         if (this.tags) {
             this.appendHtml('<div class="item_tags">')
@@ -40,8 +39,6 @@ class ItemElement extends HTMLElement {
         if (this.date) {
             this.appendHtml(`<div class="item_date">${this.date}</div>`)
         }
-
-        this.appendHtml('</div>')   
     }
     
     get name() {

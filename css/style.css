@@ -28,6 +28,7 @@ item-element {
     margin: 1em;
     box-sizing: border-box;
     border-radius: 5px;
+    position: relative;
 }
 
 item-element:hover {
@@ -35,26 +36,23 @@ item-element:hover {
     box-shadow: 0 0 3px grey;
 }
 
-.item_info {
-    position:relative;
+.item_name {
+    position: relative;
     padding-top: 1em;
     border-top: thin solid #eee;
-    height: 100px;
     line-height: 1.5em;
     text-align: center;
-}
-
-.item_name {
     font-size: 1.2em;
     font-weight: bold;
+    margin-bottom: 2em;
 }
 
 .item_tags {
     position: absolute;
     text-align: left;
-    bottom:0;
-    left:0;
-    max-width: 50%;
+    bottom: 10px;
+    left: 10px;
+    max-width: 75%;
     font-size: 0.8em;
 }
 
@@ -85,8 +83,8 @@ a:active {
 
 .item_date {
     position: absolute;
-    bottom:0;
-    right:0;
+    bottom: 10px;
+    right: 10px;
     color: grey;
     font-size: 0.8em;
 }
@@ -104,4 +102,21 @@ a:active {
 
 .hidden {
     visibility: hidden;
+}
+
+.item_image_container {
+    position: relative;
+}
+
+.item_price {
+    display: inline-block;
+    position: absolute;
+    text-align: left;
+    bottom: 0;
+    left: 0;
+    background-color: #222;
+    color: #fff;
+    font-size: 0.8em;
+    padding: 1em;
+    z-index: 1000;
 }
