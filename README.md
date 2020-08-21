@@ -42,6 +42,7 @@ All items except `name` are optional.
 - `url` 
 - `image`
 - `date`
+- `archived` (0 - not archived, 1 - archived)
 
 ### Deploy
 

@@ -19,6 +19,9 @@ function showItems() {
         for (let i = 0; i < lineLength; i++) {
             item = items.shift()
             if (item !== undefined) {
+                if (item['archived'] === 1) {
+                    continue
+                }
                 containerHtml.insertAdjacentHTML('beforeend', `
                 <item-element 
                     name="${item['name']}" 

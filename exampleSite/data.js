@@ -39,6 +39,10 @@ let data = {
             "url": "https://www.google.com/search?q=Gamer+Bookmark",
         },
         {
+            "name": "Some archived item",
+            "archived": 1,
+        },
+        {
             "name": "Donald's Secret Stuff"
         },
     ]
