@@ -1,5 +1,13 @@
 document.addEventListener("DOMContentLoaded", function(event) { 
     showItems()
+    if (is_touch_device()) {
+        var descriptionElements = document.getElementsByClassName('item_description_desktop')
+    } else {
+        var descriptionElements = document.getElementsByClassName('item_description_mobile')
+    }
+    for (let element of descriptionElements) {
+        element.style.display = 'none'
+    }
 })
 
 function showItems() {
@@ -14,6 +22,7 @@ function showItems() {
                 containerHtml.insertAdjacentHTML('beforeend', `
                 <item-element 
                     name="${item['name']}" 
+                    description="${item['description']}"
                     price="${item['price']}" 
                     currency="${item['currency']}" 
                     image="${item['image']}" 
@@ -26,4 +35,8 @@ function showItems() {
             }
         }
     }
+}
+
+function is_touch_device() {
+    return 'ontouchstart' in window;
 }

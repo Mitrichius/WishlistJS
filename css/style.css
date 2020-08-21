@@ -44,7 +44,6 @@ item-element:hover {
     text-align: center;
     font-size: 1.2em;
     font-weight: bold;
-    margin-bottom: 2em;
 }
 
 .item_tags {
@@ -116,7 +115,32 @@ a:active {
     left: 0;
     background-color: #222;
     color: #fff;
-    font-size: 0.8em;
-    padding: 1em;
+    font-size: 1em;
+    padding: 0.5em;
     z-index: 1000;
+}
+
+.item_info_container {
+    margin-bottom: 2em;
+}
+
+.item_description_desktop {
+    display: inline-block;
+    position: absolute;
+    text-align: left;
+    bottom: 0;
+    right: 0;
+    background-color: #fff;
+    height: 25px;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    z-index: 1000;
+    margin: 0.2em;
+}
+
+.item_description_mobile {
+    position: relative;
+    text-align: center;
+    font-size: 0.7em;
 }

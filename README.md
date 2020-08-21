@@ -35,6 +35,7 @@ Target your webserver to `index.html` or just open it in browser.
 #### Items section
 All items except `name` are optional.
 - `name`
+- `description`
 - `price` (just number)
 - `currency`
 - `tags` (array)
@@ -61,7 +62,7 @@ If you find a bug or have an idea for a feature, feel free to write an issue or 
 See [issues](https://github.com/Mitrichius/WishlistJS/issues).
 
 ## Credits
-[Wish List icon](https://icons8.com/icons/set/wish-list) icon by [Icons8](https://icons8.com)
+[Wish List icon](https://icons8.com/icons/set/wish-list) and [info icon](https://icons8.com/icons/set/info) by [Icons8](https://icons8.com)
 
 ## License
 MIT  

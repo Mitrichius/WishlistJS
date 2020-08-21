@@ -15,20 +15,35 @@ class ItemElement extends HTMLElement {
     }
 
     render() {        
-        let imageCode = this.image ? `<img class="item_image" src="${this.image}"/>` : ''
+        let imageCode = this.image 
+            ? `<img class="item_image" src="${this.image}"/>` 
+            : ''
+
         let nameCode = `<div class="item_name">${this.name}</div>`
 
-        let priceCode = this.price ? 
-            `<div class="item_price">${this.price} ${this.currency}</div>` 
+        let priceCode = this.price 
+            ? `<div class="item_price">${this.price} ${this.currency}</div>` 
+            : ''
+
+        let descriptionCodeDesktop = this.description
+            ? ` <div class="item_description_desktop" title="${this.description}"><img src="src/images/info-icon.png" height="25px" /></div>`
+            : ''
+
+        let descriptionCodeMobile = this.description
+            ? ` <div class="item_description_mobile">${this.description}</div>`
             : ''
 
         if (this.url) {
-            imageCode = `<a href="${this.url}"/><div class="item_image_container">${imageCode}${priceCode}</div></a>`
+            imageCode = `<a href="${this.url}"/><div class="item_image_container">${imageCode}${priceCode}${descriptionCodeDesktop}</div></a>`
             nameCode = `<div class="item_name"><a href="${this.url}"/>${this.name}</a></div>`
         }
 
         this.appendHtml(imageCode)
+        
+        this.appendHtml('<div class="item_info_container">')
         this.appendHtml(nameCode)
+        this.appendHtml(descriptionCodeMobile)
+        this.appendHtml('</div>')
 
         if (this.tags) {
             this.appendHtml('<div class="item_tags">')
@@ -44,6 +59,12 @@ class ItemElement extends HTMLElement {
     get name() {
         return this.getAttribute('name') !== 'undefined' 
             ? this.getAttribute('name') 
+            : undefined;
+    }
+
+    get description() {
+        return this.getAttribute('description') !== 'undefined' 
+            ? this.getAttribute('description') 
             : undefined;
     }
 

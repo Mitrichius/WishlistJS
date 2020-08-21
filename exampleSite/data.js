@@ -6,6 +6,7 @@ let data = {
     "items": [
         {
             "name": "This is Fine Plush Dog",
+            "description": "This is not fine actually",
             "price": 25,
             "currency": "$",
             "tags": ["plush", "toys"],
