@@ -34,8 +34,8 @@ class ItemElement extends HTMLElement {
             : ''
 
         if (this.url) {
-            imageCode = `<a href="${this.url}"/><div class="item_image_container">${imageCode}${priceCode}${descriptionCodeDesktop}</div></a>`
-            nameCode = `<div class="item_name"><a href="${this.url}"/>${this.name}</a></div>`
+            imageCode = `<a target="_blank" href="${this.url}"/><div class="item_image_container">${imageCode}${priceCode}${descriptionCodeDesktop}</div></a>`
+            nameCode = `<div class="item_name"><a target="_blank" href="${this.url}"/>${this.name}</a></div>`
         }
 
         this.appendHtml(imageCode)
