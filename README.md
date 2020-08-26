@@ -57,6 +57,10 @@ Just rsync your directory to the server and configure webserver to this path:
 Push your directory to new repository on Github (it could be private).  
 Go to Netlify and connect this repository. Config already included.  
 
+## Get app's new version and features
+Run this command in your repo: 
+`git submodule update --init --remote`
+
 ## Contributing
 If you find a bug or have an idea for a feature, feel free to write an issue or make a PR.
 
