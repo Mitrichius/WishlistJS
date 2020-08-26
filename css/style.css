@@ -144,3 +144,32 @@ item-element a:active {
     text-align: center;
     font-size: 0.7em;
 }
+
+.description {
+    color: #ddd;
+    text-align: center;
+    font-size: 1.25em;
+    padding: 0.5em 0 1em;
+    margin-bottom: 0.5em;
+    border-bottom: thin solid #ddd;
+}
+
+.description a {
+    color: #1e90ff;
+}
+
+.description a:hover,
+.description a:focus,
+.description a:active {
+    color: #cd5c5c;
+    border-bottom: 1px solid rgba(205, 92, 92, .5);
+}
+
+.description a:active,
+.description a:hover {
+    outline: 0;
+}
+
+.description a:active {
+    opacity: 0.9;
+}

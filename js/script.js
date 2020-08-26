@@ -8,6 +8,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     for (let element of descriptionElements) {
         element.style.display = 'none'
     }
+    if (data.config.description) {
+        document.getElementsByClassName('common-header')[0].innerHTML = '<div class="description">' + data.config.description + '</div>'
+    }
 })
 
 function showItems() {

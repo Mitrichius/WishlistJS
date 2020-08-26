@@ -29,8 +29,9 @@ Target your webserver to `index.html` or just open it in browser.
 ### Config (data.js)
 
 #### Config section
-- `image-default` — defatul image for items 
+- `image-default` — default image for items 
 - `currency_default` — default currency suffix to price value
+- `description` - optional html code on top of the page (header)
 
 #### Items section
 All items except `name` are optional.

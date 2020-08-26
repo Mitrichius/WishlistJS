@@ -2,6 +2,7 @@ let data = {
     "config": {
         "image_default": "https://images.unsplash.com/photo-1592439272693-c56a0d123887",
         "currency_default": "€",
+        "description": "Hi! Check my other projects: <a href=\"http://github.com/Mitrichius\""
     },
     "items": [
         {
