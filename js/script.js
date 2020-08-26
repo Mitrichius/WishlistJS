@@ -20,6 +20,7 @@ function showItems() {
             item = items.shift()
             if (item !== undefined) {
                 if (item['archived'] === 1) {
+                    i--
                     continue
                 }
                 containerHtml.insertAdjacentHTML('beforeend', `
