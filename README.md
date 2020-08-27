@@ -44,6 +44,7 @@ All items except `name` are optional.
 - `image`
 - `date`
 - `archived` (0 - not archived, 1 - archived)
+- `priority` - for additional sorting, ASC-order
 
 ### Deploy
 

@@ -13,7 +13,8 @@ let data = {
             "tags": ["plush", "toys"],
             "image": "https://cdn.shopify.com/s/files/1/1829/4817/products/rumb-tfdog-plush.jpg?v=1574884844",
             "url": "https://www.google.com/search?q=This+is+Fine+Plush+Dog",
-            "date": "2020-08-01"
+            "date": "2020-08-01",
+            "priority": 2,
         },
         {
             "name": "Trying Stuff Until It Works",
@@ -32,6 +33,7 @@ let data = {
             "image": "https://cdn.f.kz/prod/283/282497_550.jpg",
             "tags": ["puzzles"],
             "url": "https://www.google.com/search?q=Zen+puzzle",
+            "priority": 1,
         },
         {
             "name": "Gamer Bookmark",

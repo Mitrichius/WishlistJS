@@ -18,6 +18,13 @@ function showItems() {
     let containerHtml = document.querySelector('.items')
     let lineLength = 4
 
+
+    items.sort(function(a, b) {
+        a.priority = a.priority || 10000000000000
+        b.priority = b.priority || 10000000000000
+        return parseInt(a.priority) - parseInt(b.priority);
+    });
+
     while (items.length > 0) {
         for (let i = 0; i < lineLength; i++) {
             item = items.shift()
