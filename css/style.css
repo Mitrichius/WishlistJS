@@ -118,25 +118,11 @@ item-element a:active {
     font-size: 1em;
     padding: 0.5em;
     z-index: 1000;
+    height: 20px;
 }
 
 .item_info_container {
     margin-bottom: 2em;
-}
-
-.item_description_desktop {
-    display: inline-block;
-    position: absolute;
-    text-align: left;
-    bottom: 0;
-    right: 0;
-    background-color: #fff;
-    height: 25px;
-    border-radius: 50%;
-    text-align: center;
-    vertical-align: middle;
-    z-index: 1000;
-    margin: 0.2em;
 }
 
 .item_description_mobile {
@@ -172,4 +158,33 @@ item-element a:active {
 
 .description a:active {
     opacity: 0.9;
+}
+
+
+/* Icons on image */
+
+.item_icons:not(:empty) {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #222;
+    font-size: 1em;
+    padding: 0.5em;
+    height: 20px;
+}
+
+.item_icons img {
+    height: 20px;
+    filter: invert(100%);
+    margin: 0 0.2em;
+    border-radius: 50%;
+}
+
+.item_description_desktop {    
+    vertical-align: middle;
+}
+
+.item_multi {
+    vertical-align: middle;
 }

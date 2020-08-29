@@ -40,6 +40,7 @@ let data = {
             "image": "https://cdn.trendhunterstatic.com/thumbs/olly-moss.jpeg",
             "tags": ["gamer", "books"],
             "url": "https://www.google.com/search?q=Gamer+Bookmark",
+            "multi": 1,
         },
         {
             "name": "Some archived item",

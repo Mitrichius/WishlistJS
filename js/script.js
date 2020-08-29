@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     } else {
         var descriptionElements = document.getElementsByClassName('item_description_mobile')
     }
+    
     for (let element of descriptionElements) {
         element.style.display = 'none'
     }
@@ -17,7 +18,6 @@ function showItems() {
     let items = data.items
     let containerHtml = document.querySelector('.items')
     let lineLength = 4
-
 
     items.sort(function(a, b) {
         a.priority = a.priority || 10000000000000
@@ -43,6 +43,7 @@ function showItems() {
                     tags="${item['tags']}" 
                     url="${item['url']}" 
                     date="${item['date']}"
+                    multi="${item['multi']}"
                 />`)
             } else {
                 containerHtml.insertAdjacentHTML('beforeend', '<item-element class="hidden"/>')

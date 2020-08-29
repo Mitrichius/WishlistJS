@@ -26,15 +26,25 @@ class ItemElement extends HTMLElement {
             : ''
 
         let descriptionCodeDesktop = this.description
-            ? ` <div class="item_description_desktop" title="${this.description}"><img src="src/images/info-icon.png" height="25px" /></div>`
+            ? ` <div class="item_description_desktop" title="${this.description}"><img src="src/images/info-icon.png"/></div>`
             : ''
 
         let descriptionCodeMobile = this.description
             ? ` <div class="item_description_mobile">${this.description}</div>`
             : ''
 
+        let multiCode = this.multi
+            ? ` <div class="item_multi" title="Multiple"><img src="src/images/icon-multi.png"/></div>`
+            : ''
+
         if (this.url) {
-            imageCode = `<a target="_blank" href="${this.url}"/><div class="item_image_container">${imageCode}${priceCode}${descriptionCodeDesktop}</div></a>`
+            imageCode = `
+            <a target="_blank" href="${this.url}"/>
+                <div class="item_image_container">
+                    ${imageCode}${priceCode}
+                    <div class="item_icons">${multiCode}${descriptionCodeDesktop}</div>
+                </div>
+            </a>`
             nameCode = `<div class="item_name"><a target="_blank" href="${this.url}"/>${this.name}</a></div>`
         }
 
@@ -104,6 +114,12 @@ class ItemElement extends HTMLElement {
         return this.getAttribute('currency') !== 'undefined' 
             ? this.getAttribute('currency') 
             : this.config.currency_default;
+    }
+
+    get multi() {
+        return this.getAttribute('multi') !== 'undefined' 
+            ? this.getAttribute('multi') 
+            : undefined;
     }
 }
 
