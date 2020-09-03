@@ -29,12 +29,13 @@ function showItems() {
         for (let i = 0; i < lineLength; i++) {
             item = items.shift()
             if (item !== undefined) {
-                if (item['archived'] === 1) {
+                if (item['archived'] === 1 && data.config.show_archived !== 1) {
                     i--
                     continue
                 }
+                let archivedClassName = item['archived'] === 1 ? 'archived' : ''
                 containerHtml.insertAdjacentHTML('beforeend', `
-                <item-element 
+                <item-element class="${archivedClassName}"
                     name="${item['name']}" 
                     description="${item['description']}"
                     price="${item['price']}" 

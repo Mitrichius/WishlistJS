@@ -7,6 +7,11 @@ Wishlist — small vanilla JS page/application for making public wishlist. MVP s
 ## Features
 - Easy handling of items — no databases, just JSON config
 - Customizing via CSS
+- Multicurrency price
+- Item description
+- Multi-gift flag
+- Items archivation
+- Show archived items if needed
 
 ## Installation
 It's a static html-page with JS/CSS so all you need is some web-server, e.g. [nginx](https://github.com/Mitrichius/WishlistJS/blob/master/nginx.conf) or cloud solutions like Netlify or Github Pages.
@@ -32,6 +37,7 @@ Target your webserver to `index.html` or just open it in browser.
 - `image-default` — default image for items 
 - `currency_default` — default currency suffix to price value
 - `description` - optional html code on top of the page (header)
+- `show_archived` (0/1) - show archived items (with opacity and text strikethrough)
 
 #### Items section
 All parameters except `name` are optional.

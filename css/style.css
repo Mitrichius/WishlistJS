@@ -36,6 +36,16 @@ item-element:hover {
     box-shadow: 0 0 3px grey;
 }
 
+.archived {
+    background-color: #222;
+    color: #fff;
+}
+
+.archived a {
+    color: #fff;
+    text-decoration: line-through;
+}
+
 .item_name {
     position: relative;
     padding-top: 1em;
@@ -99,6 +109,11 @@ item-element a:active {
     margin: 0 auto;
 }
 
+.archived .item_image {
+    opacity: 0.5;
+}
+
+
 .hidden {
     visibility: hidden;
 }
@@ -121,6 +136,10 @@ item-element a:active {
     height: 20px;
 }
 
+.archived .item_price {
+    display: none;
+}
+
 .item_info_container {
     margin-bottom: 2em;
 }
@@ -129,6 +148,10 @@ item-element a:active {
     position: relative;
     text-align: center;
     font-size: 0.7em;
+}
+
+.archived .item_description_mobile {
+    display: none;
 }
 
 .description {
@@ -187,4 +210,8 @@ item-element a:active {
 
 .item_multi {
     vertical-align: middle;
+}
+
+.archived .item_icons {
+    display: none;
 }
