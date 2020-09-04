@@ -8,6 +8,7 @@ html {
 .container {
     width: 95%;
     margin: 0 auto;
+    max-width: 1920px;
 }
 
 .items {
