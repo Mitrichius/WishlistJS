@@ -25,31 +25,44 @@ function showItems() {
         return parseInt(a.priority) - parseInt(b.priority);
     });
 
-    while (items.length > 0) {
-        for (let i = 0; i < lineLength; i++) {
-            item = items.shift()
-            if (item !== undefined) {
-                if (item['archived'] === 1 && data.config.show_archived !== 1) {
-                    i--
-                    continue
-                }
-                let archivedClassName = item['archived'] === 1 ? 'archived' : ''
-                containerHtml.insertAdjacentHTML('beforeend', `
-                <item-element class="${archivedClassName}"
-                    name="${item['name']}" 
-                    description="${item['description']}"
-                    price="${item['price']}" 
-                    currency="${item['currency']}" 
-                    image="${item['image']}" 
-                    tags="${item['tags']}" 
-                    url="${item['url']}" 
-                    date="${item['date']}"
-                    multi="${item['multi']}"
-                />`)
-            } else {
-                containerHtml.insertAdjacentHTML('beforeend', '<item-element class="hidden"/>')
-            }
+    let archivedItems = []
+    let counter = 0
+    for (let i = 0; i < items.length; i++) {
+        item = items[i]
+        if (item['archived'] === 1 && data.config.show_archived !== 1) {
+            continue
         }
+
+        let archivedClassName = item['archived'] === 1 ? 'archived' : ''
+        let itemCode = `<item-element class="${archivedClassName}"
+            name="${item['name']}" 
+            description="${item['description']}"
+            price="${item['price']}" 
+            currency="${item['currency']}" 
+            image="${item['image']}" 
+            tags="${item['tags']}" 
+            url="${item['url']}" 
+            date="${item['date']}"
+            multi="${item['multi']}"
+        />`
+        
+        if (item['archived'] === 1) {
+            archivedItems.push(itemCode)
+            continue
+        }
+        containerHtml.insertAdjacentHTML('beforeend', itemCode)
+        counter++
+    }
+
+    for (let i = 0; i < archivedItems.length; i++) {
+        containerHtml.insertAdjacentHTML('beforeend', archivedItems[i])
+        counter++
+    }
+
+    let placeholderItemsCount = Math.ceil(counter / 4) * lineLength - counter
+
+    for (let i = 0; i < placeholderItemsCount; i++) {
+        containerHtml.insertAdjacentHTML('beforeend', '<item-element class="hidden"/>')
     }
 }
 
