@@ -4,7 +4,9 @@ Wishlist — small vanilla JS page/application for making public wishlist. MVP s
 
 [Demo](https://wishlistjs-demo.netlify.app/)  
 
-<img src="https://raw.githubusercontent.com/Mitrichius/WishlistJS/master/images/screenshot-web.png" height="300px"> <img src="https://raw.githubusercontent.com/Mitrichius/WishlistJS/master/images/screenshot-mobile.png" height="300px">
+<p align="center">
+    <img src="https://raw.githubusercontent.com/Mitrichius/WishlistJS/master/images/screenshot-web.png" height="300px">
+</p>
 
 ## Features
 - Easy handling of items — no databases, just JSON config
