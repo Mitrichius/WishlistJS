@@ -1,6 +1,6 @@
 let data = {
     "config": {
-        "image_default": "https://images.unsplash.com/photo-1592439272693-c56a0d123887",
+        "image_default": "src/images/item-default.jpg",
         "currency_default": "€",
         "description": "Hi! Check my other projects: <a href=\"http://github.com/Mitrichius\"",
         "show_archived": 1,
@@ -46,10 +46,11 @@ let data = {
         {
             "name": "Some archived item",
             "archived": 1,
-            "tags": "stuff"
+            "tags": "stuff",
         },
         {
-            "name": "Donald's Secret Stuff"
+            "name": "Donald's Secret Stuff",
+            "image": "https://images.unsplash.com/photo-1592439272693-c56a0d123887",
         },
     ]
 }
