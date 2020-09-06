@@ -2,7 +2,7 @@ let data = {
     "config": {
         "image_default": "src/images/item-default.jpg",
         "currency_default": "€",
-        "description": "Hi! Check my other projects: <a href=\"http://github.com/Mitrichius\"",
+        "description": "Hi! Check my other projects: <a href=\"http://github.com/Mitrichius\">http://github.com/Mitrichius</a>",
         "show_archived": 1,
     },
     "items": [

@@ -17,7 +17,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 function showItems() {
     let items = data.items
     let containerHtml = document.querySelector('.items')
-    let lineLength = 4
+    let elementWidth = 375
+    let lineLength = Math.floor(window.innerWidth / elementWidth) - 1
 
     items.sort(function(a, b) {
         a.priority = a.priority || 10000000000000
@@ -59,7 +60,7 @@ function showItems() {
         counter++
     }
 
-    let placeholderItemsCount = Math.ceil(counter / 4) * lineLength - counter
+    let placeholderItemsCount = Math.ceil(counter / lineLength) * lineLength - counter
 
     for (let i = 0; i < placeholderItemsCount; i++) {
         containerHtml.insertAdjacentHTML('beforeend', '<item-element class="hidden"/>')

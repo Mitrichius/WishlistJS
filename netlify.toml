@@ -1,0 +1,2 @@
+[build]
+command = "mkdir -p /opt/build/repo/build/src && rsync -av --exclude=/opt/build/repo/build /opt/build/repo/* /opt/build/repo/build/src/ && rsync -av /opt/build/repo/exampleSite/ /opt/build/repo/build && cp /opt/build/repo/build/src/index.html /opt/build/repo/build/index.html && cp /opt/build/repo/build/src/favicon.png /opt/build/repo/build/favicon.png"
