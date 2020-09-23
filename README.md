@@ -1,6 +1,6 @@
 # Wishlist [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT) [![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/paypalme/mitrichius/1)
 
-Wishlist — small vanilla JS page/application for making public wishlist.  
+Wishlist — small pure JS page/application for making public wishlist.  
 
 [Demo](https://wishlistjs-demo.netlify.app/)  
 
