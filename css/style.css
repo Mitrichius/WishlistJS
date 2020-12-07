@@ -155,7 +155,7 @@ item-element a:active {
     display: none;
 }
 
-.description {
+.description:not(:empty) {
     color: #ddd;
     text-align: center;
     font-size: 1.25em;
@@ -215,4 +215,27 @@ item-element a:active {
 
 .archived .item_icons {
     display: none;
+}
+
+.filters {
+    text-align: right;
+}
+
+.filter {
+    color: #ddd;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.filter:hover {
+    color: #a31d1d;
+}
+
+.filter[data-direction='asc']::before {
+    content: " ↑";
+}
+
+.filter[data-direction='desc']::before {
+    content: " ↓";
 }

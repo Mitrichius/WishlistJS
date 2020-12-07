@@ -1,4 +1,16 @@
-document.addEventListener("DOMContentLoaded", function(event) { 
+document.addEventListener('DOMContentLoaded', function(event) { 
+    let filters = document.getElementsByClassName('filter')
+    let getParams = retrieveGetParameters()
+    for (let filter of filters) {
+        filter.addEventListener('click', function() {
+            triggerFilter(filter)
+
+        })
+        let filterDirection = getFilterDirectionFromGetParams(filter.getAttribute('id'), getParams)
+        if (filterDirection) {
+            applyFilterDirection(filter, filterDirection)
+        }
+    }
     showItems()
     if (is_touch_device()) {
         var descriptionElements = document.getElementsByClassName('item_description_desktop')
@@ -10,21 +22,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
         element.style.display = 'none'
     }
     if (data.config.description) {
-        document.getElementsByClassName('common-header')[0].innerHTML = '<div class="description">' + data.config.description + '</div>'
+        document.getElementsByClassName('description')[0].innerHTML = data.config.description
     }
 })
 
 function showItems() {
-    let items = data.items
+    // clone object
+    let items = JSON.parse(JSON.stringify(data.items))
     let containerHtml = document.querySelector('.items')
     let elementWidth = 375
     let lineLength = Math.floor(window.innerWidth / elementWidth) - 1
+    let getParams = retrieveGetParameters()
 
-    items.sort(function(a, b) {
-        a.priority = a.priority || 10000000000000
-        b.priority = b.priority || 10000000000000
-        return parseInt(a.priority) - parseInt(b.priority);
-    });
+    sortItems(items, getParams)
 
     let archivedItems = []
     let counter = 0
@@ -68,5 +78,106 @@ function showItems() {
 }
 
 function is_touch_device() {
-    return 'ontouchstart' in window;
+    return 'ontouchstart' in window
+}
+
+function retrieveGetParameters() {
+    var prmstr = window.location.search.substr(1)
+    return prmstr != null && prmstr != "" ? transformToAssocArray(prmstr) : {}
+}
+
+function transformToAssocArray(prmstr) {
+    var params = {}
+    var prmarr = prmstr.split("&")
+    for ( var i = 0; i < prmarr.length; i++) {
+        var tmparr = prmarr[i].split("=")
+        params[tmparr[0]] = tmparr[1]
+    }
+    return params
+}
+
+function getFilterDirectionFromGetParams(filterId, getParams) {
+     if (
+        typeof(getParams[filterId]) != "undefined" 
+        && getParams[filterId] !== null
+        && getParams[filterId] !== 'none'
+    ) {
+        return getParams[filterId]
+    } else {
+        return undefined;
+    }
+}
+
+function sortItems(items, getParams) {
+    let sortName = getFilterDirectionFromGetParams('sort-name', getParams)
+    if (sortName) {
+        sortItemsByName(items, sortName)
+        return
+    }
+      
+    items.sort(function(a, b) {
+        a.priority = a.priority || 10000000000000
+        b.priority = b.priority || 10000000000000
+        return parseInt(a.priority) - parseInt(b.priority)
+    })
+}
+
+function sortItemsByName(items, direction) {    
+    if (direction == 'asc') {
+        items.sort(function(a, b) {
+            return a.name.localeCompare(b.name)
+        })
+    }
+    if (direction == 'desc') {
+        items.sort(function(a, b) {
+            return b.name.localeCompare(a.name)
+        })
+    }
+}
+
+function triggerFilter(filter) {
+    let currentDirection = filter.getAttribute('data-direction')
+    let nextDirection = getNextDirection(currentDirection)
+    applyFilterDirection(filter, nextDirection)
+    document.getElementsByClassName('items')[0].innerHTML = ''
+    showItems()
+}
+
+function applyFilterDirection(filter, direction) {
+    filter.setAttribute('data-direction', direction)
+    addGetParam(filter.getAttribute('id'), direction)
+}
+
+function getNextDirection(direction) {
+    if (direction == 'asc') {
+        return 'desc'
+    }
+    if (direction == 'desc') {
+        return 'none'
+    }
+    return 'asc'
+}
+
+function addGetParam(key, value) {
+    key = encodeURIComponent(key)
+    value = encodeURIComponent(value)
+
+    var keyValue = document.location.search.substr(1).split('&')
+    let i = 0
+    for (; i  < keyValue.length; i++) {
+        if (keyValue[i].startsWith(key + '=')) {
+            let pair = keyValue[i].split('=')
+            pair[1] = value
+            keyValue[i] = pair.join('=')
+            break
+        }
+    }
+
+    if (i >= keyValue.length) {
+        keyValue[keyValue.length] = [key,value].join('=')
+    }
+    let params = keyValue.join('&')
+
+    let newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + params
+    window.history.pushState({ path: newUrl }, '', newUrl)
 }
