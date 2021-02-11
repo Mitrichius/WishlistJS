@@ -57,6 +57,14 @@ All parameters except `name` are optional.
 - `priority` - for additional sorting, ASC-order
 - `multi` - show that item can be gifted several times
 - `properties` - array of objects with "key" and "value" keys
+```
+"properties": [
+    {
+        "key": "Size",
+        "value": "M"
+    }
+]
+```
 
 ### Deploy
 
