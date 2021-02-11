@@ -16,6 +16,16 @@ let data = {
             "url": "https://www.google.com/search?q=This+is+Fine+Plush+Dog",
             "date": "2020-08-01",
             "priority": 2,
+            "properties": [
+                {
+                    "key": "Type",
+                    "value": "Plush"
+                },
+                {
+                    "key": "Size",
+                    "value": "Full"
+                }
+            ]
         },
         {
             "name": "Trying Stuff Until It Works",

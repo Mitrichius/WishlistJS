@@ -56,6 +56,7 @@ All parameters except `name` are optional.
 - `archived` (0 - not archived, 1 - archived)
 - `priority` - for additional sorting, ASC-order
 - `multi` - show that item can be gifted several times
+- `properties` - array of objects with "key" and "value" keys
 
 ### Deploy
 
@@ -84,6 +85,7 @@ Icons are provided by [Icons8](https://icons8.com):
 - [wish List](https://icons8.com/icons/set/wish-list)
 - [info](https://icons8.com/icons/set/info) 
 - [infinity](https://icons8.com/icons/set/infinity--v2)
+- [properties](https://icons8.com/icons/set/add-property-1)
 
 ## License
 MIT  
