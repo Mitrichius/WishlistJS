@@ -14,13 +14,20 @@ document.addEventListener('DOMContentLoaded', function(event) {
     showItems()
     if (is_touch_device()) {
         var descriptionElements = document.getElementsByClassName('item_description_desktop')
+        var propertiesElements = document.getElementsByClassName('item_properties_desktop')
     } else {
-        var descriptionElements = document.getElementsByClassName('item_description_mobile')
+        var descriptionElements = document.getElementsByClassName('item_description_desktop')
+        var propertiesElements = document.getElementsByClassName('item_properties_mobile')
     }
-    
-    for (let element of descriptionElements) {
-        element.style.display = 'none'
-    }
+
+    Array.from(descriptionElements).forEach(function(element, index, array) {
+        element.parentNode.removeChild(element)
+    });
+
+    Array.from(propertiesElements).forEach(function(element, index, array) {
+        element.parentNode.removeChild(element)
+    });
+
     if (data.config.description) {
         document.getElementsByClassName('description')[0].innerHTML = data.config.description
     }
@@ -38,11 +45,21 @@ function showItems() {
 
     let archivedItems = []
     let counter = 0
+    let properties = []
+    let propertiesString = ''
     for (let i = 0; i < items.length; i++) {
         item = items[i]
         if (item['archived'] === 1 && data.config.show_archived !== 1) {
             continue
         }
+
+        properties = []
+        if (item['properties'] && Object.keys(item['properties']).length > 0) {
+            item['properties'].forEach(function(property, index, array) {
+                properties.push(property['key'] + ': ' + property['value'])
+            });
+        }
+        propertiesString = properties.join('\n')
 
         let archivedClassName = item['archived'] === 1 ? 'archived' : ''
         let itemCode = `<item-element class="${archivedClassName}"
@@ -55,6 +72,7 @@ function showItems() {
             url="${item['url']}" 
             date="${item['date']}"
             multi="${item['multi']}"
+            properties="${propertiesString}"
         />`
         
         if (item['archived'] === 1) {

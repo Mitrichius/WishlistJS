@@ -26,15 +26,27 @@ class ItemElement extends HTMLElement {
             : ''
 
         let descriptionCodeDesktop = this.description
-            ? ` <div class="item_description_desktop" title="${this.description}"><img src="src/images/info-icon.png"/></div>`
+            ? `<div class="item_description_desktop" title="${this.description}"><img src="src/images/info-icon.png"/></div>`
+            : ''
+
+        let propertiesCodeDesktop = this.properties
+            ? `<div class="item_properties_desktop" title="${this.properties}"><img src="src/images/icon-properties.png"/></div>`
+            : ''
+
+        let propertiesString = this.properties 
+            ? '<ul><li>' + this.properties.replaceAll('\n', '</li><li>') + '</li></ul>'
+            : ''
+
+        let propertiesCodeMobile = propertiesString
+            ? `<div class="item_properties_mobile">${propertiesString}</div>`
             : ''
 
         let descriptionCodeMobile = this.description
-            ? ` <div class="item_description_mobile">${this.description}</div>`
+            ? ` <div class="item_description_mobile">${this.description}${propertiesCodeMobile}</div>`
             : ''
 
         let multiCode = this.multi
-            ? ` <div class="item_multi" title="Multiple"><img src="src/images/icon-multi.png"/></div>`
+            ? `<div class="item_multi" title="Multiple"><img src="src/images/icon-multi.png"/></div>`
             : ''
 
         if (this.url) {
@@ -42,7 +54,7 @@ class ItemElement extends HTMLElement {
             <a target="_blank" href="${this.url}"/>
                 <div class="item_image_container">
                     ${imageCode}${priceCode}
-                    <div class="item_icons">${multiCode}${descriptionCodeDesktop}</div>
+                    <div class="item_icons">${multiCode}${descriptionCodeDesktop}${propertiesCodeDesktop}</div>
                 </div>
             </a>`
             nameCode = `<div class="item_name"><a target="_blank" href="${this.url}"/>${this.name}</a></div>`
@@ -119,6 +131,12 @@ class ItemElement extends HTMLElement {
     get multi() {
         return this.getAttribute('multi') !== 'undefined' 
             ? this.getAttribute('multi') 
+            : undefined;
+    }
+
+    get properties() {
+        return this.getAttribute('properties') !== 'undefined' 
+            ? this.getAttribute('properties') 
             : undefined;
     }
 }
