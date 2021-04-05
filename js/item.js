@@ -41,9 +41,20 @@ class ItemElement extends HTMLElement {
             ? `<div class="item_properties_mobile">${propertiesString}</div>`
             : ''
 
-        let descriptionCodeMobile = this.description
-            ? ` <div class="item_description_mobile">${this.description}${propertiesCodeMobile}</div>`
-            : ''
+        let descriptionCodeMobile = ''
+        if (this.description || propertiesCodeMobile) {
+            descriptionCodeMobile += '<div class="item_description_mobile">'
+
+            if (this.description) {
+                descriptionCodeMobile += this.description
+            }
+
+            if (propertiesCodeMobile) {
+                descriptionCodeMobile += propertiesCodeMobile
+            }
+
+            descriptionCodeMobile += '</div>'
+        }
 
         let multiCode = this.multi
             ? `<div class="item_multi" title="Multiple"><img src="src/images/icon-multi.png"/></div>`
